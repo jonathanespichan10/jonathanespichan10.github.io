@@ -5,58 +5,172 @@
 
 <title>Jonathan Espichan | Engineering Portfolio</title>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #fafafa;
-    color: #222;
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
 }
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #0b1120;
+    color: #e5e7eb;
+}
+
+
+/* HEADER */
 
 header {
-    background: #111827;
-    color: white;
-    padding: 45px 20px;
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    background:
+    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.8)),
+    url('https://images.unsplash.com/photo-1518770660439-4636190af475');
+
+    background-size: cover;
+    background-position: center;
 }
 
-header h1 {
+
+.hero h1 {
+    font-size: 65px;
     margin: 0;
-    font-size: 42px;
+    letter-spacing: 2px;
 }
 
-header p {
-    font-size: 18px;
+
+.hero p {
+    font-size: 22px;
+    color: #94a3b8;
 }
+
+
+.button {
+
+    display:inline-block;
+    margin-top:25px;
+    padding:14px 30px;
+    background:#38bdf8;
+    color:#00111f;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+    transition:.3s;
+
+}
+
+
+.button:hover {
+
+    transform:translateY(-5px);
+
+}
+
+
+
+/* CONTENT */
 
 .container {
-    max-width: 850px;
-    margin: auto;
-    padding: 25px;
+
+    max-width:1000px;
+    margin:auto;
+    padding:50px 25px;
+
 }
 
-.section {
-    background: white;
-    padding: 25px;
-    margin: 20px 0;
-    border-radius: 10px;
-    border: 1px solid #ddd;
+
+.card {
+
+    background:#111827;
+    border:1px solid #1f2937;
+    border-radius:20px;
+    padding:35px;
+    margin:30px 0;
+
+    transition:.3s;
+
 }
+
+
+.card:hover {
+
+    transform:translateY(-8px);
+    border-color:#38bdf8;
+
+}
+
 
 h2 {
-    color: #111827;
+
+    color:#38bdf8;
+    font-size:32px;
+
 }
+
+
+h3 {
+
+    color:white;
+
+}
+
+
+/* PROJECTS */
 
 .project {
-    margin-top: 15px;
+
+    background:#0f172a;
+    padding:20px;
+    border-radius:15px;
+    margin-top:20px;
+
 }
 
-footer {
-    text-align: center;
-    padding: 20px;
-    color: #666;
+
+.tag {
+
+    display:inline-block;
+    background:#1e293b;
+    padding:7px 14px;
+    border-radius:20px;
+    margin:5px;
+    color:#38bdf8;
+
 }
+
+
+/* FOOTER */
+
+footer {
+
+    text-align:center;
+    padding:30px;
+    color:#64748b;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.hero h1{
+font-size:42px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+}
+
 
 </style>
 
@@ -65,88 +179,147 @@ footer {
 
 <body>
 
+
 <header>
+
+<div class="hero">
 
 <h1>Jonathan Espichan</h1>
 
 <p>
-Electrical Engineering | Soccer | Learning Through Building
+Electrical Engineering • Soccer • Building & Learning
 </p>
 
+
+<a class="button" href="#projects">
+View My Work
+</a>
+
+
+</div>
+
 </header>
+
+
 
 
 <div class="container">
 
 
-<div class="section">
+
+<div class="card">
 
 <h2>About Me</h2>
 
 <p>
-Hi, I'm Jonathan, a student-athlete from New Jersey interested in Electrical Engineering and technology. I enjoy learning how things work, building projects, and improving my skills through hands-on experience.
+
+Hi, I'm Jonathan, a student-athlete from New Jersey interested in Electrical Engineering and technology. I enjoy understanding how things work, creating projects, and developing skills through hands-on experiences.
+
 </p>
 
 <p>
-This website is where I will share the engineering projects I create and the things I learn along the way.
+
+This portfolio documents my engineering projects, skills, and growth as I continue exploring electronics, programming, and design.
+
 </p>
 
 </div>
 
 
-<div class="section">
 
-<h2>Projects</h2>
+
+<div class="card" id="projects">
+
+<h2>Engineering Projects</h2>
+
 
 <div class="project">
 
-<h3>Coming Soon</h3>
+<h3>⚡ Coming Soon: Electrical Engineering Projects</h3>
 
 <p>
-I am currently working on my first electrical engineering projects. Updates will be posted here as I continue learning.
+
+I am currently building projects involving electronics, programming, and hardware. Future projects will include designs, code, and explanations of my engineering process.
+
 </p>
 
-</div>
 
-</div>
+<span class="tag">Arduino</span>
+<span class="tag">Circuits</span>
+<span class="tag">Programming</span>
 
-
-<div class="section">
-
-<h2>Skills & Interests</h2>
-
-<ul>
-<li>Electrical Engineering</li>
-<li>Programming</li>
-<li>Circuits and Electronics</li>
-<li>Arduino Projects</li>
-<li>Problem Solving</li>
-</ul>
 
 </div>
 
 
-<div class="section">
+</div>
+
+
+
+
+<div class="card">
+
+<h2>Skills</h2>
+
+
+<span class="tag">Electrical Engineering</span>
+
+<span class="tag">Python</span>
+
+<span class="tag">Computer Science</span>
+
+<span class="tag">Problem Solving</span>
+
+<span class="tag">Teamwork</span>
+
+
+</div>
+
+
+
+
+<div class="card">
 
 <h2>Soccer</h2>
 
+
 <p>
-Outside of engineering, I play competitive soccer. The sport has helped me develop discipline, teamwork, and the ability to keep improving.
+
+Outside of engineering, I compete in soccer. The sport has taught me discipline, communication, resilience, and the importance of constantly improving.
+
 </p>
 
+
 </div>
 
 
+
+
+<div class="card">
+
+<h2>Contact</h2>
+
+<p>
+
+GitHub: Coming Soon
+
+</p>
+
+
 </div>
+
+
+
+</div>
+
 
 
 <footer>
 
-<p>
 Jonathan Espichan | Engineering Portfolio
-</p>
 
 </footer>
+
 
 
 </body>
