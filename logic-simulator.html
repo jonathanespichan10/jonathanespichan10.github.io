@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Logic Gate Simulator</title>
+
+<style>
+
+body{
+
+font-family:Arial,sans-serif;
+background:#0f172a;
+color:white;
+text-align:center;
+margin:0;
+padding:40px;
+
+}
+
+.container{
+
+max-width:700px;
+margin:auto;
+background:#1e293b;
+padding:30px;
+border-radius:20px;
+
+}
+
+button{
+
+padding:15px 30px;
+margin:10px;
+font-size:18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+background:#38bdf8;
+
+}
+
+button:hover{
+
+background:#0ea5e9;
+
+}
+
+select{
+
+padding:12px;
+font-size:18px;
+margin-bottom:20px;
+
+}
+
+.led{
+
+width:60px;
+height:60px;
+border-radius:50%;
+background:red;
+margin:30px auto;
+transition:.3s;
+
+}
+
+.on{
+
+background:lime;
+box-shadow:0 0 30px lime;
+
+}
+
+.status{
+
+font-size:24px;
+margin-top:20px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Logic Gate Simulator</h1>
+
+<p>Select a logic gate and test different inputs.</p>
+
+<select id="gate">
+
+<option>AND</option>
+<option>OR</option>
+<option>XOR</option>
+<option>NAND</option>
+<option>NOR</option>
+<option>NOT</option>
+
+</select>
+
+<br>
+
+<button onclick="toggleA()">
+Input A:
+<span id="a">0</span>
+</button>
+
+<button onclick="toggleB()">
+Input B:
+<span id="b">0</span>
+</button>
+
+<div id="led" class="led"></div>
+
+<div class="status">
+
+Output:
+<span id="output">0</span>
+
+</div>
+
+</div>
+
+<script>
+
+let A=0;
+let B=0;
+
+function toggleA(){
+
+A=A?0:1;
+document.getElementById("a").innerHTML=A;
+calculate();
+
+}
+
+function toggleB(){
+
+B=B?0:1;
+document.getElementById("b").innerHTML=B;
+calculate();
+
+}
+
+function calculate(){
+
+let gate=document.getElementById("gate").value;
+
+let out=0;
+
+switch(gate){
+
+case "AND":
+out=A&&B;
+break;
+
+case "OR":
+out=A||B;
+break;
+
+case "XOR":
+out=A^B;
+break;
+
+case "NAND":
+out=!(A&&B);
+break;
+
+case "NOR":
+out=!(A||B);
+break;
+
+case "NOT":
+out=!A;
+break;
+
+}
+
+out=Number(out);
+
+document.getElementById("output").innerHTML=out;
+
+let led=document.getElementById("led");
+
+if(out){
+
+led.classList.add("on");
+
+}else{
+
+led.classList.remove("on");
+
+}
+
+}
+
+document.getElementById("gate").addEventListener("change",calculate);
+
+calculate();
+
+</script>
+
+</body>
+
+</html>
