@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Algebra Calculator</title>
+
+<style>
+
+body{
+
+background:#0f172a;
+font-family:Arial;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+color:white;
+
+}
+
+.container{
+
+background:#1e293b;
+padding:40px;
+border-radius:20px;
+width:350px;
+box-shadow:0 0 30px rgba(0,0,0,.4);
+
+}
+
+h1{
+
+text-align:center;
+margin-bottom:25px;
+
+}
+
+input{
+
+width:100%;
+padding:12px;
+margin:8px 0;
+border:none;
+border-radius:8px;
+font-size:16px;
+
+}
+
+button{
+
+width:100%;
+padding:12px;
+margin-top:10px;
+font-size:16px;
+background:#38bdf8;
+border:none;
+border-radius:8px;
+cursor:pointer;
+
+}
+
+button:hover{
+
+background:#0ea5e9;
+
+}
+
+#result{
+
+margin-top:20px;
+font-size:18px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Algebra Calculator</h1>
+
+<input id="a" placeholder="a">
+
+<input id="b" placeholder="b">
+
+<input id="c" placeholder="c">
+
+<button onclick="solve()">Solve Quadratic</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function solve(){
+
+let a=Number(document.getElementById("a").value);
+
+let b=Number(document.getElementById("b").value);
+
+let c=Number(document.getElementById("c").value);
+
+let d=b*b-4*a*c;
+
+if(a===0){
+
+document.getElementById("result").innerHTML="a cannot be 0";
+
+return;
+
+}
+
+if(d<0){
+
+document.getElementById("result").innerHTML="No real solutions";
+
+return;
+
+}
+
+let x1=(-b+Math.sqrt(d))/(2*a);
+
+let x2=(-b-Math.sqrt(d))/(2*a);
+
+document.getElementById("result").innerHTML=
+"Discriminant: "+d+
+"<br><br>x₁ = "+x1.toFixed(4)+
+"<br>x₂ = "+x2.toFixed(4);
+
+}
+
+</script>
+
+</body>
+
+</html>
