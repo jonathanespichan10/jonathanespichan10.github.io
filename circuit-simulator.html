@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Circuit Simulator</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#0f172a;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    width:750px;
+    background:#1e293b;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 0 30px rgba(0,0,0,.4);
+}
+
+h1{
+    text-align:center;
+}
+
+.controls{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin-bottom:30px;
+}
+
+input{
+    width:100%;
+}
+
+button{
+    margin-top:20px;
+    width:100%;
+    padding:14px;
+    font-size:18px;
+    cursor:pointer;
+    border:none;
+    border-radius:10px;
+    background:#38bdf8;
+}
+
+button:hover{
+    background:#0ea5e9;
+}
+
+.circuit{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    margin:40px 0;
+    font-size:50px;
+}
+
+.off{
+    filter:grayscale(100%);
+}
+
+.on{
+    filter:none;
+    text-shadow:0 0 20px yellow;
+}
+
+.results{
+    font-size:20px;
+    line-height:1.8;
+}
+
+.warning{
+    color:#ff7070;
+    font-weight:bold;
+}
+
+.safe{
+    color:#4ade80;
+    font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Interactive Circuit Simulator</h1>
+
+<div class="controls">
+
+<div>
+Voltage (V)
+<input id="voltage" type="range" min="1" max="12" value="9" oninput="update()">
+<p><span id="vValue">9</span> V</p>
+</div>
+
+<div>
+Resistance (Ω)
+<input id="resistance" type="range" min="50" max="1000" value="220" oninput="update()">
+<p><span id="rValue">220</span> Ω</p>
+</div>
+
+</div>
+
+<button onclick="toggleSwitch()" id="switchBtn">
+Switch OFF
+</button>
+
+<div class="circuit">
+
+🔋
+
+➡️
+
+💡
+
+</div>
+
+<div style="text-align:center;font-size:70px;" id="led" class="off">
+
+💡
+
+</div>
+
+<div class="results">
+
+Current:
+<span id="current"></span>
+
+<br><br>
+
+Status:
+
+<span id="status"></span>
+
+</div>
+
+</div>
+
+<script>
+
+let power=false;
+
+function toggleSwitch(){
+
+power=!power;
+
+document.getElementById("switchBtn").innerHTML=
+power?"Switch ON":"Switch OFF";
+
+update();
+
+}
+
+function update(){
+
+let V=Number(document.getElementById("voltage").value);
+let R=Number(document.getElementById("resistance").value);
+
+document.getElementById("vValue").innerHTML=V;
+document.getElementById("rValue").innerHTML=R;
+
+let I=power?V/R:0;
+
+document.getElementById("current").innerHTML=
+(I*1000).toFixed(1)+" mA";
+
+let led=document.getElementById("led");
+
+let status=document.getElementById("status");
+
+if(!power){
+
+led.className="off";
+status.innerHTML="Circuit Open";
+
+return;
+
+}
+
+led.className="on";
+
+if(I>0.03){
+
+status.innerHTML="<span class='warning'>Too much current! LED may burn out.</span>";
+
+}else{
+
+status.innerHTML="<span class='safe'>LED Operating Safely</span>";
+
+}
+
+}
+
+update();
+
+</script>
+
+</body>
+</html>
